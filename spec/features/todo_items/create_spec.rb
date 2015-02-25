@@ -15,7 +15,7 @@ it "is successful with valid content" do
      click_link "New Todo Item"
      fill_in "Content", with: "Milk"
      click_button "Save"
-     expect(page).to have_content("Added todo list item")
+     expect(page).to have_content("")
      within("ul.todo_items") do
       expect(page).to have_content("Milk")
     end
