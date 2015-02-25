@@ -20,10 +20,16 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
-RSpec.configure do |c|
-  c.expose_current_running_example_as :example
+  config.expose_current_running_example_as :example
+
+  config.expect_with :rspec do |c|
+    c.syntax = [:should, :expect]
   end
-  
+
+  config.infer_spec_type_from_file_location!
+
+  config.deprecation_stream = 'log/rspec-deprecations.log'
+
   # ## Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
